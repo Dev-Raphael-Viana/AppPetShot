@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import {
-    Dimensions,
-    SafeAreaView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Dimensions,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-// Cores do tema
 const COLORS = {
   background: '#E6F2FA', 
   primary: '#3C91E6', 
