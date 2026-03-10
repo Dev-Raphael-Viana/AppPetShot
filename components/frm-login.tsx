@@ -7,7 +7,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 
 const { width } = Dimensions.get('window');
@@ -28,6 +28,16 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(''); 
+
+  const validaLogin = () => {
+    if (email === 'Admin' && password === 'admin') {
+      setErrorMessage(''); 
+      alert('Login bem-sucedido!');
+    } else {
+      setErrorMessage('email ou senha invalido');
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -95,7 +105,11 @@ const LoginScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.enterButton}>
+        {errorMessage !== '' ? (
+          <Text style={styles.errorText}>{errorMessage}</Text>
+        ) : null}
+
+        <TouchableOpacity style={styles.enterButton} onPress={validaLogin}>
           <Text style={styles.enterButtonText}>ENTRAR</Text>
         </TouchableOpacity>
 
@@ -216,6 +230,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: COLORS.lightText,
     textDecorationLine: 'underline',
+  },
+  errorText: {
+    color: COLORS.googleRed, 
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 10,
+    fontWeight: 'bold',
   },
   enterButton: {
     width: '100%',
