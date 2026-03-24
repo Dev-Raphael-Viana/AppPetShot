@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 const { width } = Dimensions.get('window');
 
@@ -32,10 +33,19 @@ const LoginScreen = () => {
 
   const validaLogin = () => {
     if (email === 'Admin' && password === 'admin') {
-      setErrorMessage(''); 
       alert('Login bem-sucedido!');
+      Toast.show({
+        type: 'success',
+        text1: 'Sucesso',
+        text2: 'Login bem-sucedido!',
+      });
     } else {
-      setErrorMessage('email ou senha invalido');
+      alert('email ou senha invalido');
+      Toast.show({
+        type: 'error',
+        text1: 'Erro',
+        text2: 'Email ou senha inválidos',
+      });
     }
   };
 
@@ -118,6 +128,7 @@ const LoginScreen = () => {
           <TouchableOpacity>
             <Text style={styles.registerLinkText}>Cadastre-se aqui!</Text>
           </TouchableOpacity>
+          <Toast/>
         </View>
       </View>
     </SafeAreaView>
